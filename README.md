@@ -19,6 +19,8 @@ If you need complex structures probably environment is not the best way to confi
 
 All these flake8 plugins is a little overkill.
 
+Platform independent.
+
 # Dependencies
 Python3.6+ because of f-strings. Nothing more.
 
