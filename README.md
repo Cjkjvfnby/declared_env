@@ -1,17 +1,10 @@
-<p align="center">
-    <a href="https://github.com/cjkjvfnby/declared_env/actions">
-        <img alt="Lint" src="https://github.com/cjkjvfnby/declared_env/workflows/Lint/badge.svg">
-    </a>
-    <a href="https://github.com/cjkjvfnby/declared_env/actions">
-        <img alt="Test" src="https://github.com/cjkjvfnby/declared_env/workflows/Test/badge.svg">
-    </a>
-    <a href="https://github.com/cjkjvfnby/declared_env/blob/master/LICENSE">
-        <img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg">
-    </a>
-    <a href="https://github.com/psf/black">
-        <img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
-    </a>
-</p>
+[![](https://img.shields.io/badge/maintained-yes-green.svg)](https://github.com/cjkjvfnby/declared_env)
+[![](https://img.shields.io/badge/platform%20independent-yes-green.svg)](https://github.com/cjkjvfnby/declared_env)
+[![](https://img.shields.io/badge/dependency-None-green.svg)](https://github.com/cjkjvfnby/declared_env)
+[![](https://github.com/cjkjvfnby/declared_env/workflows/Lint/badge.svg)](https://github.com/cjkjvfnby/declared_env/actions)
+[![](https://github.com/cjkjvfnby/declared_env/workflows/Test/badge.svg)](https://github.com/cjkjvfnby/declared_env/actions)
+[![](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/cjkjvfnby/declared_env)
+[![](https://black.readthedocs.io/en/stable/_static/license.svg)](https://github.com/cjkjvfnby/declared_env/blob/master/LICENSE)
 
 # Declared env
 
