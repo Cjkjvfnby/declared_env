@@ -24,7 +24,7 @@ Python3.6+ because of f-strings. Nothing more.
 
 # Examples
 ## Simple example
-```
+```python
 class MyEnv(EnvironmentDeclaration):
     prefix = "FOO"
     host = EnvironmentString(default="localhost")  # env: FOO_HOST
