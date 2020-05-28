@@ -53,7 +53,7 @@ If you assign declaration into variable with name in caps, you can access it via
 In that case to get list of environment variables you can create manage py command.
 Create a [manage.py](https://docs.djangoproject.com/en/3.0/howto/custom-management-commands/) command to show help.
 
-`mysite\polls\management\commands\show_env.py`
+`mysite/polls/management/commands/show_env.py`
 ```python
 from django.conf import settings
 from django.core.management.base import BaseCommand
