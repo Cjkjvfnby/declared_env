@@ -1,8 +1,16 @@
-<h2 align="center">Declared environment</h2>
-
 <p align="center">
-<a href="https://github.com/psf/black/blob/master/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
-<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+    <a href="https://github.com/cjkjvfnby/declared_env/actions">
+        <img alt="Lint" src="https://github.com/cjkjvfnby/declared_env/workflows/Lint/badge.svg">
+    </a>
+    <a href="https://github.com/cjkjvfnby/declared_env/actions">
+        <img alt="Test" src="https://github.com/cjkjvfnby/declared_env/workflows/Test/badge.svg">
+    </a>
+    <a href="https://github.com/cjkjvfnby/declared_env/blob/master/LICENSE">
+        <img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg">
+    </a>
+    <a href="https://github.com/psf/black">
+        <img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
+    </a>
 </p>
 
 # Declared env
