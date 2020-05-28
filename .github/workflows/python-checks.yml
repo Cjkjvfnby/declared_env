@@ -27,6 +27,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r dev-requirements.pip
+    - name: Black chack
+      run: |
+        black . --check
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
