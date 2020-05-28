@@ -10,28 +10,5 @@ home-page = "https://TODO"
 
 requires-python=">=3.6"
 
-dev-requires = [
-    "bandit==1.6.2",
-    "flake8==3.7.9",
-    "flake8-bandit==2.1.2",
-    "flake8-bugbear==20.1.4",
-    "flake8-builtins==1.5.2",
-    "flake8-commas==2.0.0",
-    "flake8-comprehensions==3.2.2",
-    "flake8-cognitive-complexity==0.0.2",
-    "flake8-docstrings==1.5.0",
-    "flake8-eradicate==0.3.0",
-    "flake8-import-order==0.18.1",
-    "flake8-mutable==1.2.0",
-    "flake8-print==3.1.4",
-    "pep8-naming==0.10.0",
-]
-
-[tool.flit.metadata.requires-extra]
-test = [
-    "pytest >=5.4.1",
-    "pytest-cov >=2.9.0",
-]
-
 [tool.black]
 line-length = 100

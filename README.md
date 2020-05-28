@@ -86,6 +86,9 @@ if __name__ == '__main__':
 
 # Development
 
+## Install dev requirements
+`pip install -r dev-requirements.pip`
+
 ## Formatting
 - `black .`
 
