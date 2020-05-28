@@ -1,0 +1,7 @@
+htmlcov/
+.pytest_cache/
+*_venv/
+.idea/
+.coverage
+*.pyc
+examples/
