@@ -1,5 +1,4 @@
 import math
-import os
 
 from pytest import fixture, mark, raises
 
@@ -25,21 +24,9 @@ test_data = test_fields + [
 ]
 
 
-@fixture(params=test_data)
-def env(request):
-    in_, field_class, out = request.param
-    data = {
-        "FOO_VAR": str(in_),
-    }
-    os.environ.update(data)
-
-    yield field_class, out
-    for key in data:
-        del os.environ[key]
-
-
-def test_env_variable_is_returned(env):
-    field_class, expected = env
+@mark.parametrize("value,field_class,expected", test_data)
+def test_env_variable_is_returned(monkeypatch, value, field_class, expected):
+    monkeypatch.setenv("FOO_VAR", str(value))
 
     class MyConfiguration(EnvironmentDeclaration):
         prefix = "FOO"

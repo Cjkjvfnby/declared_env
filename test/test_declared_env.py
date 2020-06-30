@@ -1,6 +1,4 @@
-import os
-
-from pytest import approx, fixture, mark, raises
+from pytest import approx, raises
 
 from declared_env import (
     EnvironmentBool,
@@ -20,23 +18,12 @@ class MyConfiguration(EnvironmentDeclaration):
     float_var = EnvironmentFloat()
 
 
-@fixture
-def env():
-    data = {
-        "FOO_TEXT_VAR": "text",
-        "FOO_INT_VAR": "42",
-        "FOO_BOOLEAN_VAR": "YES",
-        "FOO_FLOAT_VAR": "3.14",
-    }
+def test_env_variable_is_returned(monkeypatch):
+    monkeypatch.setenv("FOO_TEXT_VAR", "text")
+    monkeypatch.setenv("FOO_INT_VAR", "42")
+    monkeypatch.setenv("FOO_BOOLEAN_VAR", "YES")
+    monkeypatch.setenv("FOO_FLOAT_VAR", "3.14")
 
-    os.environ.update(data)
-    yield
-    for key in data:
-        del os.environ[key]
-
-
-@mark.usefixtures("env")
-def test_env_variable_is_returned():
     my = MyConfiguration()
     assert my.int_var == 42
     assert my.text_var == "text"
