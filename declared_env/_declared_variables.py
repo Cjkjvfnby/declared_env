@@ -34,7 +34,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
 
     def __set_name__(self, owner, name):
         """
-        Save name of the assigned variable to the descriptor
+        Save name of the assigned variable to the descriptor.
 
         See: https://docs.python.org/3/reference/datamodel.html#object.__set_name__
         """
@@ -63,7 +63,6 @@ class EnvironmentVariable(metaclass=ABCMeta):
 
         :raises: EnvironmentKeyError if value is not found.
         """
-        a = 15
         val = os.getenv(self.var_name, self.default)
         if self.required and val is None:
             raise EnvironmentKeyError(self.var_name)
