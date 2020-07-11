@@ -95,7 +95,7 @@ def test_help_with_required(default, field_class, expected):
         var = foo
 
     help_text = foo.get_help()
-    assert help_text == f"FOO_VAR             required"
+    assert help_text == "FOO_VAR             required"
 
 
 @mark.parametrize("default,field_class,expected", test_fields)
@@ -107,7 +107,7 @@ def test_help_with_required_and_help(default, field_class, expected):
         var = foo
 
     help_text = foo.get_help()
-    assert help_text == f"FOO_VAR             help text, required"
+    assert help_text == "FOO_VAR             help text, required"
 
 
 @mark.parametrize("default,field_class,expected", test_fields)
