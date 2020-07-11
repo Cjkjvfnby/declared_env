@@ -8,11 +8,12 @@ on:
       - reopened
       - synchronize
     paths:
-      - declared_env/**.py
+      - '**.py'
+      - '.github/workflows/**'
 
 
 jobs:
-  build:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:

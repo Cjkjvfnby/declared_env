@@ -7,9 +7,12 @@ on:
       - edited
       - reopened
       - synchronize
+    paths:
+      - '**.py'
+      - '.github/workflows/**'
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements-dev.pip
-      - name: Black chack
+      - name: Black check
         run: |
           black . --check
       - name: Lint with flake8
