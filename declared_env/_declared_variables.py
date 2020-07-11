@@ -26,7 +26,6 @@ class EnvironmentVariable(metaclass=ABCMeta):
         obj.__dict__[self.name] = val
         return obj.__dict__[self.name]
 
-
     def __init__(self, required=True, default=None, help_text=None):
         """Initialize a descriptor with base fields."""
         self.help_text = help_text
@@ -49,6 +48,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
         TODO: inject formatter
         """
         help_text = []
+        1/0
         if self.help_text:
             help_text.append(f"{self.help_text}")
         if self.required and not self.default:
@@ -64,6 +64,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
 
         :raises: EnvironmentKeyError if value is not found.
         """
+        a = 15
         val = os.getenv(self.var_name, self.default)
         if self.required and val is None:
             raise EnvironmentKeyError(self.var_name)
