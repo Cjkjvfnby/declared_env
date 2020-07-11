@@ -13,9 +13,9 @@ I like to write code in declarative declare what you want and use it with benefi
 - autocomplete: no more string literals around a file
 - enforce best practices: each variable has a prefix, all names in uppercase
 - error reports:, you got full report, if you missed something
-- help: get list of variables to make an instruction for admins 
+- help: get list of variables to make an instruction for admins
 
-Array, dict and json types not supported. 
+Array, dict and json types not supported.
 If you need complex structures probably environment is not the best way to configure your app.
 
 All these flake8 plugins is a little overkill.
@@ -74,7 +74,7 @@ class Command(BaseCommand):
                 print(val.get_help())
 
 
-``` 
+```
 
 ```shell script
 mysite> manage.py show_env
@@ -102,3 +102,13 @@ if __name__ == '__main__':
 ## Run test
 - `pytest --cov=declared_env` run test
 - `pytest --cov=declared_env --cov-report html` run test with html report
+
+
+## Install pre-commit
+- `pip install pre-commit`
+- add hooks `pre-commit install`
+- update to latest repos `pre-commit autoupdate`
+
+Note:
+flake8 dependencies are duplicated in the `additional_dependencies` section.
+This might be a problem.
