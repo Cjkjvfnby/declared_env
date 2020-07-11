@@ -36,6 +36,8 @@ jobs:
       - name: Black check
         run: |
           black . --check
+
+      - uses: rbialon/flake8-annotations@v1
       - name: Lint with flake8
         run: |
           flake8 . --count

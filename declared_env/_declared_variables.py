@@ -26,6 +26,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
         obj.__dict__[self.name] = val
         return obj.__dict__[self.name]
 
+
     def __init__(self, required=True, default=None, help_text=None):
         """Initialize a descriptor with base fields."""
         self.help_text = help_text
@@ -34,7 +35,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
 
     def __set_name__(self, owner, name):
         """
-        Save name of the assigned variable to the descriptor.
+        Save name of the assigned variable to the descriptor
 
         See: https://docs.python.org/3/reference/datamodel.html#object.__set_name__
         """
