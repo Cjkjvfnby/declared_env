@@ -1,6 +1,6 @@
 import math
 
-from pytest import fixture, mark, raises
+from pytest import mark, raises
 
 from declared_env import (
     EnvironmentBool,
