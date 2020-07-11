@@ -1,8 +1,9 @@
 import sys
+import os
 
 from pytest import fixture
 
-sys.path.append("..")
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 
 @fixture

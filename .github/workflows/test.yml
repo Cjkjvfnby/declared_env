@@ -34,6 +34,5 @@ jobs:
         run: |
           pip install -r requirements-test.pip
       - name: Test with pytest
-        working-directory: test
         run: |
           pytest --cov=declared_env
