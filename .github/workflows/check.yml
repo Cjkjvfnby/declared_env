@@ -1,4 +1,4 @@
-name: Lint
+name: Test and lint
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ on:
       - '.github/workflows/**'
 
 jobs:
-  lint:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -27,17 +27,19 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements-dev.pip') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements-dev.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install dependencies
         run: |
-          pip install -r requirements-dev.pip
+          pip install -r requirements-dev.txt
       - name: Black check
         run: |
           black . --check
-
       - uses: rbialon/flake8-annotations@v1
       - name: Lint with flake8
         run: |
           flake8 . --count
+      - name: Test with pytest
+        run: |
+          pytest --cov=declared_env
