@@ -18,7 +18,7 @@ test_fields = [
 ]
 
 test_data = test_fields + [
-    (3, EnvironmentFloat, 4),
+    (3, EnvironmentFloat, 3),
     ("inf", EnvironmentFloat, math.inf),
     ("NO", EnvironmentBool, False),
 ]
@@ -53,7 +53,7 @@ def test_default_var_as_string(default, field_class, expected):
         var = field_class(default=str(default))
 
     my = MyConfiguration()
-    assert my.var == [expected]
+    assert my.var == expected
 
 
 @mark.parametrize(
