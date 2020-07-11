@@ -1,3 +1,5 @@
+wheel
+
 bandit==1.6.2
 flake8==3.7.9
 flake8-bandit==2.1.2
