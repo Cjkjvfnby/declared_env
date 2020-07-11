@@ -18,7 +18,7 @@ test_fields = [
 ]
 
 test_data = test_fields + [
-    (3, EnvironmentFloat, 3),
+    (3, EnvironmentFloat, 4),
     ("inf", EnvironmentFloat, math.inf),
     ("NO", EnvironmentBool, False),
 ]
