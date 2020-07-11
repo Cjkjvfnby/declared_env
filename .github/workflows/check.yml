@@ -42,7 +42,6 @@ jobs:
       - name: Install dependencies
         if: steps.reuse-site-package.outputs.cache-hit != 'true'
         run: |
-          pip install wheel==0.34.2
           pip install -r requirements-dev.txt
       - name: Black check
         run: |
