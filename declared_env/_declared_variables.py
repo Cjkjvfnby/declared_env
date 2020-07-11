@@ -48,7 +48,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
         TODO: inject formatter
         """
         help_text = []
-        1/0
+        1 / 0
         if self.help_text:
             help_text.append(f"{self.help_text}")
         if self.required and not self.default:
