@@ -53,7 +53,7 @@ def test_default_var_as_string(default, field_class, expected):
         var = field_class(default=str(default))
 
     my = MyConfiguration()
-    assert my.var == expected
+    assert my.var == [expected]
 
 
 @mark.parametrize(
