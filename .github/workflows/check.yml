@@ -33,6 +33,7 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Install dependencies
         run: |
+          pip isntall wheel==0.34.2
           pip install -r requirements-dev.txt
       - name: Black check
         run: |
