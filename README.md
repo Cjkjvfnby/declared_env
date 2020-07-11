@@ -103,3 +103,5 @@ if __name__ == '__main__':
 - `cd test` change dir
 - `pytest --cov=declared_env` run test
 - `pytest --cov=declared_env --cov-report html` run test with html report
+
+# TODO tmp changes to trigger pipelines
