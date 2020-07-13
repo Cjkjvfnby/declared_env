@@ -8,8 +8,7 @@ on:
       - reopened
       - synchronize
     paths:
-      - '**.py'
-      - '.github/workflows/**'
+      - '**.cpp'
 
 jobs:
   check:
