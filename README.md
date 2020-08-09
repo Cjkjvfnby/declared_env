@@ -107,7 +107,7 @@ if __name__ == '__main__':
 ## Install pre-commit
 - `pip install pre-commit`
 - add hooks `pre-commit install`
-- update to latest repos `pre-commit autoupdate`
+- update to the latest versions `pre-commit autoupdate`
 
 Note:
 flake8 dependencies are duplicated in the `additional_dependencies` section.
