@@ -1,21 +1,24 @@
 """Variables declarations."""
+from __future__ import annotations
+
 import os
 from abc import ABCMeta, abstractmethod
 from configparser import ConfigParser
-from typing import Any, Callable, Optional
+from typing import Any, Optional, Type
 
 from declared_env._exceptions import EnvironmentKeyError, EnvironmentValueError
+from declared_env._prefixable import Prefixable
 
 
 class EnvironmentVariable(metaclass=ABCMeta):
     """Base class for all environment variables."""
 
     @abstractmethod
-    def converter(self, value) -> Callable[[Any], Any]:
-        """Convert value as string to type or from type to itself."""
+    def converter(self, value: str) -> Any:
+        """Convert value as string to variable raw type."""
         ...
 
-    def __get__(self, obj, type_=None) -> object:
+    def __get__(self, obj: Prefixable, type_: Type = None):
         """
         Magic trick on first call replaces descriptor method with calculated value.
 
@@ -26,9 +29,18 @@ class EnvironmentVariable(metaclass=ABCMeta):
         obj.__dict__[self.name] = val
         return obj.__dict__[self.name]
 
+    def __set_name__(self, owner: Prefixable, name: str):
+        """
+        Save name of the assigned variable to the descriptor.
+
+        See: https://docs.python.org/3/reference/datamodel.html#object.__set_name__
+        """
+        self.name = name
+        self.var_name = f"{owner.prefix.upper()}_{name.upper()}"
+
     def __init__(
         self,
-        required=True,
+        required: bool = True,
         default: Optional[str] = None,
         help_text: Optional[str] = None,
     ):
@@ -38,16 +50,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
         # env variable must be a string
         self.default = default if default is None else str(default)
 
-    def __set_name__(self, owner, name):
-        """
-        Save name of the assigned variable to the descriptor.
-
-        See: https://docs.python.org/3/reference/datamodel.html#object.__set_name__
-        """
-        self.name = name
-        self.var_name = f"{owner.prefix.upper()}_{name.upper()}"
-
-    def get_help(self):
+    def get_help(self) -> str:
         """
         Return a help string about a field.
 
@@ -63,7 +66,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
         help_message = ", ".join(help_text)
         return f"{self.var_name:<20}{help_message}"
 
-    def __get_raw_value(self):
+    def __get_raw_value(self) -> str:
         """
         Return value from environment as string or default one as is.
 
@@ -74,11 +77,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
             raise EnvironmentKeyError(self.var_name)
         return val
 
-    def __str__(self):
-        """Return string representation of the filed."""
-        return f"{self.name}: {self.var_name}"
-
-    def get_valid_value(self):
+    def get_valid_value(self) -> Any:
         """
         Get value as desired type.
 
@@ -90,6 +89,10 @@ class EnvironmentVariable(metaclass=ABCMeta):
             return self.converter(val)
         except ValueError as e:
             raise EnvironmentValueError(str(e), self.var_name)
+
+    def __str__(self):
+        """Return string representation of the filed."""
+        return f"{self.name}: {self.var_name}"
 
 
 class EnvironmentString(EnvironmentVariable):
@@ -113,7 +116,7 @@ class EnvironmentFloat(EnvironmentVariable):
 class EnvironmentBool(EnvironmentVariable):
     """Represent an environment variable that is True of False."""
 
-    def converter(self, val):
+    def converter(self, val: str) -> bool:
         """Convert string representation to boolean."""
         try:
             return ConfigParser()._convert_to_boolean(val)

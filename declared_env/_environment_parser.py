@@ -5,7 +5,7 @@ TODO write more info
 https://realpython.com/python-descriptors/
 
 """
-from abc import ABCMeta, abstractmethod
+from abc import ABCMeta
 from logging import error
 from typing import List
 
@@ -14,15 +14,16 @@ from declared_env._exceptions import (
     DeclaredEnvironmentException,
     DeclaredEnvironmentExit,
 )
+from declared_env._prefixable import Prefixable
 
 
-class EnvironmentDeclaration(metaclass=ABCMeta):
+class EnvironmentDeclaration(Prefixable, metaclass=ABCMeta):
     """
     Base class responsible for parsing environment.
 
     You need to declare an attribute `prefix: str` and add your variables declaration.
     Then you need to declare environment variables.
-    Name of the variables matter, expected environmentvatraible name is constructed
+    Name of the attributes matter, expected environment variable names is constructed
     from the prefix underscore and class variable name, all in uppercase.
 
     >>> class MyEnv(EnvironmentDeclaration):
@@ -33,12 +34,6 @@ class EnvironmentDeclaration(metaclass=ABCMeta):
     >>> my_env.host
     'localhost'
     """
-
-    @property
-    @abstractmethod
-    def prefix(self) -> str:
-        """Prefix for environment variable name."""
-        ...
 
     def __init__(self):
         """
@@ -55,7 +50,7 @@ class EnvironmentDeclaration(metaclass=ABCMeta):
             error(f"Environment is not configured properly:\n{err_text}")
             raise DeclaredEnvironmentExit()
 
-    def get_help(self):
+    def get_help(self) -> str:
         """
         Return help text for declared variables.
 
@@ -74,7 +69,7 @@ class EnvironmentDeclaration(metaclass=ABCMeta):
                 errors.append(e)
         return errors
 
-    def __get_settings(self):
+    def __get_settings(self) -> List[EnvironmentVariable]:
         return sorted(
             (
                 v
