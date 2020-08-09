@@ -70,7 +70,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
 
     def __str__(self):
         """Return string representation of the filed."""
-        x = 1
+        x = 2
         return f"{self.name}: {self.var_name}"
 
     def get_valid_value(self):
