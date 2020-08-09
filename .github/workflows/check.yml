@@ -28,7 +28,7 @@ jobs:
           black . --check
       - name: Lint with flake8
         run: |
-          flake8 . --count --format="::error file=%(path)s,line=%(row)d,col=%(col)d::%(path)s:%(row)d:%(col)d: %(code)s %(text)s"
+          flake8 . --format="::error file=%(path)s,line=%(row)d,col=%(col)d::%(path)s:%(row)d:%(col)d: %(code)s %(text)s"
       - name: Test with pytest
         run: |
           pytest --cov=declared_env
