@@ -2,7 +2,7 @@
 import os
 from abc import ABCMeta, abstractmethod
 from configparser import ConfigParser
-from typing import Any, Callable
+from typing import Any, Callable, Optional
 
 from declared_env._exceptions import EnvironmentKeyError, EnvironmentValueError
 
@@ -26,11 +26,17 @@ class EnvironmentVariable(metaclass=ABCMeta):
         obj.__dict__[self.name] = val
         return obj.__dict__[self.name]
 
-    def __init__(self, required=True, default=None, help_text=None):
+    def __init__(
+        self,
+        required=True,
+        default: Optional[str] = None,
+        help_text: Optional[str] = None,
+    ):
         """Initialize a descriptor with base fields."""
         self.help_text = help_text
         self.required = required
-        self.default = default if default is None else str(default)  # env variable must be a string
+        # env variable must be a string
+        self.default = default if default is None else str(default)
 
     def __set_name__(self, owner, name):
         """

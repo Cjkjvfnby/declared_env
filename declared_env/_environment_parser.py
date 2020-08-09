@@ -9,8 +9,11 @@ from abc import ABCMeta, abstractmethod
 from logging import error
 from typing import List
 
-from declared_env._declared_variables import EnvironmentVariable
-from declared_env._exceptions import DeclaredEnvironmentException, DeclaredEnvironmentExit
+from declared_env._declared_variables import EnvironmentString, EnvironmentVariable
+from declared_env._exceptions import (
+    DeclaredEnvironmentException,
+    DeclaredEnvironmentExit,
+)
 
 
 class EnvironmentDeclaration(metaclass=ABCMeta):
@@ -73,6 +76,10 @@ class EnvironmentDeclaration(metaclass=ABCMeta):
 
     def __get_settings(self):
         return sorted(
-            (v for v in self.__class__.__dict__.values() if isinstance(v, EnvironmentVariable)),
+            (
+                v
+                for v in self.__class__.__dict__.values()
+                if isinstance(v, EnvironmentVariable)
+            ),
             key=lambda x: x.name,
         )
