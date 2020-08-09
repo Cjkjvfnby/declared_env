@@ -1,12 +1,14 @@
 [flake8]
+ignore = E203, E501, W503  # handled by black
 exclude =
     *_venv
     examples
     .tox
-max-complexity = 10
-max-line-length  = 100
+max-complexity = 7
+max-cognitive-complexity = 5
 per-file-ignores =
     test/*: D10,D101,D103,S101
     ./declared_env/__init__.py: F401
     ./declared_env/_exceptions.py: D107
 application-import-names = declared_env
+doctests = True

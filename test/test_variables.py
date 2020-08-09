@@ -59,8 +59,16 @@ def test_default_var_as_string(default, field_class, expected):
 @mark.parametrize(
     "default,field_class,error_message",
     [
-        ("hello", EnvironmentInteger, "FOO_VAR: invalid literal for int() with base 10: 'hello'"),
-        ("hello", EnvironmentFloat, "FOO_VAR: could not convert string to float: 'hello'"),
+        (
+            "hello",
+            EnvironmentInteger,
+            "FOO_VAR: invalid literal for int() with base 10: 'hello'",
+        ),
+        (
+            "hello",
+            EnvironmentFloat,
+            "FOO_VAR: could not convert string to float: 'hello'",
+        ),
         ("hello", EnvironmentBool, "FOO_VAR: Not a boolean: hello"),
     ],
 )
