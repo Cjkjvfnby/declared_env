@@ -1,6 +1,6 @@
 import math
 
-from pytest import mark, raises
+import pytest
 
 from declared_env import (
     EnvironmentBool,
@@ -24,7 +24,7 @@ test_data = test_fields + [
 ]
 
 
-@mark.parametrize("value,field_class,expected", test_data)
+@pytest.mark.parametrize(("value", "field_class", "expected"), test_data)
 def test_env_variable_is_returned(monkeypatch, value, field_class, expected):
     monkeypatch.setenv("FOO_VAR", str(value))
 
@@ -36,7 +36,7 @@ def test_env_variable_is_returned(monkeypatch, value, field_class, expected):
     assert my.var == expected
 
 
-@mark.parametrize("default,field_class,expected", test_data)
+@pytest.mark.parametrize(("default", "field_class", "expected"), test_data)
 def test_default_var(default, field_class, expected):
     class MyConfiguration(EnvironmentDeclaration):
         prefix = "FOO"
@@ -46,7 +46,7 @@ def test_default_var(default, field_class, expected):
     assert my.var == expected
 
 
-@mark.parametrize("default,field_class,expected", test_data)
+@pytest.mark.parametrize(("default", "field_class", "expected"), test_data)
 def test_default_var_as_string(default, field_class, expected):
     class MyConfiguration(EnvironmentDeclaration):
         prefix = "FOO"
@@ -56,8 +56,8 @@ def test_default_var_as_string(default, field_class, expected):
     assert my.var == expected
 
 
-@mark.parametrize(
-    "default,field_class,error_message",
+@pytest.mark.parametrize(
+    ("default", "field_class", "error_message"),
     [
         (
             "hello",
@@ -77,12 +77,12 @@ def test_invalid(default, field_class, error_message, error_checker):
         prefix = "FOO"
         var = field_class(default=default)
 
-    with raises(SystemExit):
+    with pytest.raises(SystemExit):
         MyConfiguration()
     error_checker(error_message)
 
 
-@mark.parametrize("default,field_class,expected", test_fields)
+@pytest.mark.parametrize(("default", "field_class", "expected"), test_fields)
 def test_help_with_default(default, field_class, expected):
     foo = field_class(default=default)
 
@@ -94,7 +94,7 @@ def test_help_with_default(default, field_class, expected):
     assert help_text == f"FOO_VAR             default={default}"
 
 
-@mark.parametrize("default,field_class,expected", test_fields)
+@pytest.mark.parametrize(("default", "field_class", "expected"), test_fields)
 def test_help_with_required(default, field_class, expected):
     foo = field_class()
 
@@ -106,7 +106,7 @@ def test_help_with_required(default, field_class, expected):
     assert help_text == "FOO_VAR             required"
 
 
-@mark.parametrize("default,field_class,expected", test_fields)
+@pytest.mark.parametrize(("default", "field_class", "expected"), test_fields)
 def test_help_with_required_and_help(default, field_class, expected):
     foo = field_class(help_text="help text")
 
@@ -118,7 +118,7 @@ def test_help_with_required_and_help(default, field_class, expected):
     assert help_text == "FOO_VAR             help text, required"
 
 
-@mark.parametrize("default,field_class,expected", test_fields)
+@pytest.mark.parametrize(("default", "field_class", "expected"), test_fields)
 def test_help_with_default_and_help(default, field_class, expected):
     foo = field_class(help_text="help text", default=default)
 

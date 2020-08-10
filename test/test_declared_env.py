@@ -1,4 +1,4 @@
-from pytest import approx, raises
+import pytest
 
 from declared_env import (
     EnvironmentBool,
@@ -28,11 +28,11 @@ def test_env_variable_is_returned(monkeypatch):
     assert my.int_var == 42
     assert my.text_var == "text"
     assert my.boolean_var is True
-    assert my.float_var == approx(3.14)
+    assert my.float_var == pytest.approx(3.14)
 
 
 def test_missing_var(error_checker):
-    with raises(SystemExit):
+    with pytest.raises(SystemExit):
         MyConfiguration()
     error_checker(
         "FOO_BOOLEAN_VAR: variable not set",
