@@ -106,7 +106,9 @@ if __name__ == '__main__':
 
 ## Install pre-commit
 - `pip install pre-commit`
-- add hooks `pre-commit install`
+- add hooks
+  - `pre-commit install`
+  - `pre-commit install --hook-type commit-msg`
 - update to the latest versions `pre-commit autoupdate`
 
 Note:
