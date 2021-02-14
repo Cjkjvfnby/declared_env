@@ -1,6 +1,7 @@
 htmlcov/
 .pytest_cache/
 *_venv/
+venv_*/
 .idea/
 .coverage
 *.pyc
