@@ -9,5 +9,4 @@ per-file-ignores =
     test/*: D10,D101,D103,S101, ANN
     ./declared_env/__init__.py: F401
     ./declared_env/_exceptions.py: D107
-application-import-names = declared_env
 doctests = True
