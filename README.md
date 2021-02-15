@@ -76,7 +76,7 @@ class Command(BaseCommand):
 
 ```
 
-```shell script
+```shell
 mysite> manage.py show_env
 MYSITE_SECRET_KEY   see https://docs.djangoproject.com/en/3.0/ref/settings/#secret-key , default=foo
 ```
@@ -93,23 +93,35 @@ if __name__ == '__main__':
 `pip install -r dev-requirements.pip`
 
 ## Formatting
-- `black .`
+```shell
+black .
+isort .
+```
 
 ## Check
-
-- `flake8`
+```shell
+flake8
+```
 
 ## Run test
-- `pytest --cov=declared_env` run test
-- `pytest --cov=declared_env --cov-report html` run test with html report
-
+```shell
+pytest --cov=declared_env --cov-report html
+```
 
 ## Install pre-commit
-- `pip install pre-commit`
+- install
+  ```shell
+  pip install pre-commit
+  ```
 - add hooks
-  - `pre-commit install`
-  - `pre-commit install --hook-type commit-msg`
-- update to the latest versions `pre-commit autoupdate`
+  ```shell
+  pre-commit install
+  pre-commit install --hook-type commit-msg
+  ```
+- update to the latest versions
+  ```shell
+  pre-commit autoupdate
+  ```
 
 Note:
 flake8 dependencies are duplicated in the `additional_dependencies` section.
