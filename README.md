@@ -90,7 +90,7 @@ if __name__ == '__main__':
 # Development
 
 ## Install dev requirements
-`pip install -r dev-requirements.pip`
+`pip install -r requirements-dev.txt`
 
 ## Formatting
 ```shell
