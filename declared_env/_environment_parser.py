@@ -10,10 +10,7 @@ from logging import error
 from typing import List
 
 from declared_env._declared_variables import EnvironmentString, EnvironmentVariable
-from declared_env._exceptions import (
-    DeclaredEnvironmentException,
-    DeclaredEnvironmentExit,
-)
+from declared_env._exceptions import DeclaredEnvironmentError, DeclaredEnvironmentExit
 from declared_env._prefixable import Prefixable
 
 
@@ -58,14 +55,14 @@ class EnvironmentDeclaration(Prefixable, metaclass=ABCMeta):
         """
         return "\n".join(s.get_help() for s in self.__settings)
 
-    def validate(self) -> List[DeclaredEnvironmentException]:
+    def validate(self) -> List[DeclaredEnvironmentError]:
         """Validate all variables and return error messages list."""
         errors = []
 
         for s in self.__settings:
             try:
                 s.get_valid_value()
-            except DeclaredEnvironmentException as e:
+            except DeclaredEnvironmentError as e:
                 errors.append(e)
         return errors
 
