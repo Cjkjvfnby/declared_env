@@ -109,10 +109,6 @@ pytest --cov=declared_env --cov-report html
 ```
 
 ## Install pre-commit
-- install
-  ```shell
-  pip install pre-commit
-  ```
 - add hooks
   ```shell
   pre-commit install
