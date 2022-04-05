@@ -43,6 +43,7 @@ jobs:
           path: coverage.xml
           skip_covered: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_coverage: 90
           show_missing: true
           link_missing_lines: true
           report_name: Poject coverage
