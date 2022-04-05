@@ -37,10 +37,8 @@ jobs:
       - name: Test with pytest
         run: |
           pytest -v --cov=declared_env --cov-report xml:coverage.xml
-  coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: 5monkeys/cobertura-action@master
+      - name: Report coverage
+        uses: 5monkeys/cobertura-action@master
         with:
           path: coverage.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
