@@ -1,6 +1,6 @@
 [flake8]
 ignore = E203, E501, W503,  # handled by black
-         ANN101, ANN204
+         ANN101, ANN204, ANN401,
 exclude =
     *_venv
     venv_*
