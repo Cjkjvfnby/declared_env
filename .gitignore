@@ -3,6 +3,8 @@ htmlcov/
 *_venv/
 venv_*/
 .idea/
-.coverage
 *.pyc
 examples/
+coverage.xml
+htmlcov
+.coverage
