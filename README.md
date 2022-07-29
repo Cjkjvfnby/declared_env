@@ -92,22 +92,6 @@ if __name__ == '__main__':
 ## Install dev requirements
 `pip install -r requirements-dev.txt`
 
-## Formatting
-```shell
-black .
-isort .
-```
-
-## Check
-```shell
-flake8
-```
-
-## Run test
-```shell
-pytest --cov=declared_env --cov-report html
-```
-
 ## Install pre-commit
 - add hooks
   ```shell
@@ -119,6 +103,12 @@ pytest --cov=declared_env --cov-report html
   pre-commit autoupdate
   ```
 
-Note:
-flake8 dependencies are duplicated in the `additional_dependencies` section.
-This might be a problem.
+## Formatting and Linting
+```shell
+pre-commit run --all-files
+```
+
+## Run test
+```shell
+pytest --cov=declared_env --cov-report html
+```
