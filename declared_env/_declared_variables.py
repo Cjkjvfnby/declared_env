@@ -73,7 +73,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
         :raises: EnvironmentKeyError if value is not found.
         """
         val = os.getenv(self.var_name, self.default)
-        if self.required and val is None:
+        if self.required and not val:
             raise EnvironmentKeyError(self.var_name)
         return val
 
