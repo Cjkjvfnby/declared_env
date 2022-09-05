@@ -41,7 +41,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
     def __init__(
         self,
         required: bool = True,
-        default: Optional[str] = None,
+        default: str = "",
         help_text: Optional[str] = None,
     ):
         """Initialize a descriptor with base fields."""
@@ -98,19 +98,25 @@ class EnvironmentVariable(metaclass=ABCMeta):
 class EnvironmentString(EnvironmentVariable):
     """Represent an environment variable that is string."""
 
-    converter = str
+    def converter(self, value: str) -> Any:
+        """Return string itself."""
+        return value
 
 
 class EnvironmentInteger(EnvironmentVariable):
     """Represent an environment variable that is integer."""
 
-    converter = int
+    def converter(self, value: str) -> Any:
+        """Convert string representation to int."""
+        return int(value)
 
 
 class EnvironmentFloat(EnvironmentVariable):
     """Represent an environment variable that is float."""
 
-    converter = float
+    def converter(self, value: str) -> Any:
+        """Convert string representation to float."""
+        return float(value)
 
 
 class EnvironmentBool(EnvironmentVariable):
@@ -118,7 +124,6 @@ class EnvironmentBool(EnvironmentVariable):
 
     def converter(self, val: str) -> bool:
         """Convert string representation to boolean."""
-        try:
-            return ConfigParser()._convert_to_boolean(val)
-        except ValueError as e:
-            raise EnvironmentValueError(str(e), self.var_name)
+        if val.lower() not in ConfigParser.BOOLEAN_STATES:
+            raise EnvironmentValueError(f"Not a boolean: {val}", self.var_name)
+        return ConfigParser.BOOLEAN_STATES[val.lower()]
