@@ -25,8 +25,6 @@ class EnvironmentKeyError(DeclaredEnvironmentError):
 class EnvironmentValueError(DeclaredEnvironmentError):
     """Raised when an operation or function receives an argument that an inappropriate value."""
 
-    pass
-
 
 class DeclaredEnvironmentExit(DeclaredEnvironmentError, SystemExit):  # noqa N818
     """
