@@ -1,8 +1,8 @@
 """Abstract class with prefix attribute."""
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 
-class Prefixable(metaclass=ABCMeta):
+class Prefixable(ABC):  # noqa: too-few-public-methods
     """Abstract class with prefix attribute."""
 
     @property
