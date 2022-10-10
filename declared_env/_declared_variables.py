@@ -16,7 +16,6 @@ class EnvironmentVariable(metaclass=ABCMeta):
     @abstractmethod
     def converter(self, value: str) -> Any:
         """Convert value as string to variable raw type."""
-        ...
 
     def __get__(self, obj: Prefixable, type_: Type = None):
         """
@@ -49,6 +48,8 @@ class EnvironmentVariable(metaclass=ABCMeta):
         self.required = required
         # env variable must be a string
         self.default = default if default is None else str(default)
+        self.name = "Not set"
+        self.var_name = "Not set"
 
     def get_help(self) -> str:
         """
@@ -88,7 +89,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
         try:
             return self.converter(val)
         except ValueError as e:
-            raise EnvironmentValueError(str(e), self.var_name)
+            raise EnvironmentValueError(str(e), self.var_name) from e
 
     def __str__(self):
         """Return string representation of the filed."""
@@ -122,8 +123,8 @@ class EnvironmentFloat(EnvironmentVariable):
 class EnvironmentBool(EnvironmentVariable):
     """Represent an environment variable that is True of False."""
 
-    def converter(self, val: str) -> bool:
+    def converter(self, value: str) -> bool:
         """Convert string representation to boolean."""
-        if val.lower() not in ConfigParser.BOOLEAN_STATES:
-            raise EnvironmentValueError(f"Not a boolean: {val}", self.var_name)
-        return ConfigParser.BOOLEAN_STATES[val.lower()]
+        if value.lower() not in ConfigParser.BOOLEAN_STATES:
+            raise EnvironmentValueError(f"Not a boolean: {value}", self.var_name)
+        return ConfigParser.BOOLEAN_STATES[value.lower()]
