@@ -17,3 +17,10 @@ skip_gitignore=true
 
 [tool.pylint.MAIN]
 good-names=["e", "_"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--doctest-modules",
+    "--doctest-continue-on-failure",
+    "--showlocals",
+]
