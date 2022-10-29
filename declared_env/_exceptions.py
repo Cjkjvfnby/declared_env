@@ -1,11 +1,11 @@
 """Custom exceptions."""
-from typing import Any, Tuple
+from typing import Any
 
 
 class DeclaredEnvironmentError(Exception):
     """Base exception for all raised errors."""
 
-    def __init__(self, message: str, variable: Any, *args: Tuple[Any]):
+    def __init__(self, message: str, variable: Any, *args: tuple[Any]):
         self.variable = variable
         super().__init__(message, *args)
 
@@ -17,7 +17,7 @@ class DeclaredEnvironmentError(Exception):
 class EnvironmentKeyError(DeclaredEnvironmentError):
     """Raised when a environment key is not found in the set of existing keys."""
 
-    def __init__(self, variable: Any, *args: Tuple[Any]):
+    def __init__(self, variable: Any, *args: tuple[Any]):
         self.variable = variable
         super().__init__("variable not set", variable, *args)
 

@@ -7,7 +7,6 @@ https://realpython.com/python-descriptors/
 """
 from abc import ABC
 from logging import error
-from typing import List
 
 from declared_env._declared_variables import EnvironmentVariable
 from declared_env._exceptions import DeclaredEnvironmentError, DeclaredEnvironmentExit
@@ -56,7 +55,7 @@ class EnvironmentDeclaration(Prefixable, ABC):  # noqa: B024
         """
         return "\n".join(s.get_help() for s in self.__settings)
 
-    def validate(self) -> List[DeclaredEnvironmentError]:
+    def validate(self) -> list[DeclaredEnvironmentError]:
         """Validate all variables and return error messages list."""
         errors = []
 
@@ -67,7 +66,7 @@ class EnvironmentDeclaration(Prefixable, ABC):  # noqa: B024
                 errors.append(e)
         return errors
 
-    def __get_settings(self) -> List[EnvironmentVariable]:
+    def __get_settings(self) -> list[EnvironmentVariable]:
         return sorted(
             (
                 v
