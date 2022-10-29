@@ -2,7 +2,7 @@
 from abc import ABC, abstractmethod
 
 
-class Prefixable(ABC):  # noqa: too-few-public-methods
+class Prefixable(ABC):  # noqa: PLR0903
     """Abstract class with prefix attribute."""
 
     @property

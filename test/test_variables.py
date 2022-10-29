@@ -12,7 +12,7 @@ from declared_env import (
 
 
 def init_field(field):
-    class MyConfiguration(EnvironmentDeclaration):  # noqa: unused-variable
+    class MyConfiguration(EnvironmentDeclaration):  # noqa: PLW0612
         prefix = "FOO"
         var = field
 

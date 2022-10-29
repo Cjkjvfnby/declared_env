@@ -26,7 +26,7 @@ class EnvironmentValueError(DeclaredEnvironmentError):
     """Raised when an operation or function receives an argument that an inappropriate value."""
 
 
-class DeclaredEnvironmentExit(DeclaredEnvironmentError, SystemExit):  # noqa N818
+class DeclaredEnvironmentExit(DeclaredEnvironmentError, SystemExit):  # noqa: N818
     """
     Raised when validation of declared environment failed.
 
