@@ -18,7 +18,7 @@ class MyConfiguration(EnvironmentDeclaration):
     float_var = EnvironmentFloat()
 
 
-def test_env_variable_is_returned(monkeypatch):
+def test_env_variable_is_returned(monkeypatch):  # noqa: import
     monkeypatch.setenv("FOO_TEXT_VAR", "text")
     monkeypatch.setenv("FOO_INT_VAR", "42")
     monkeypatch.setenv("FOO_BOOLEAN_VAR", "YES")
