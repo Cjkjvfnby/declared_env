@@ -6,7 +6,7 @@ build-backend = "flit_core.buildapi"
 module = "declared_env"
 author = "Andrey Solomatin"
 author-email = "cjkjvfnby@gmail.com"
-home-page = "https://TODO"
+home-page = "https://github.com/Cjkjvfnby/declared_env"
 
 requires-python=">=3.6"
 
