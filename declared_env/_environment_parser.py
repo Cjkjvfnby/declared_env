@@ -13,7 +13,7 @@ from declared_env._exceptions import DeclaredEnvironmentError, DeclaredEnvironme
 from declared_env._prefixable import Prefixable
 
 
-class EnvironmentDeclaration(Prefixable, ABC):  # noqa: B024
+class EnvironmentDeclaration(Prefixable, ABC):
     """
     Base class responsible for parsing environment.
 
