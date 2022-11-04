@@ -24,11 +24,11 @@ def test_env_variable_is_returned(monkeypatch):
     monkeypatch.setenv("FOO_BOOLEAN_VAR", "YES")
     monkeypatch.setenv("FOO_FLOAT_VAR", "3.14")
 
-    my = MyConfiguration()
-    assert my.int_var == 42
-    assert my.text_var == "text"
-    assert my.boolean_var is True
-    assert my.float_var == pytest.approx(3.14)
+    configuration = MyConfiguration()
+    assert configuration.int_var == 42
+    assert configuration.text_var == "text"
+    assert configuration.boolean_var is True
+    assert configuration.float_var == pytest.approx(3.14)
 
 
 def test_missing_var(error_checker):

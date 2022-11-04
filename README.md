@@ -23,7 +23,7 @@ All these flake8 plugins is a little overkill.
 Platform independent.
 
 # Dependencies
-Python3.6+ because of f-strings. Nothing more.
+Python3.9
 
 # Examples
 ## Simple example

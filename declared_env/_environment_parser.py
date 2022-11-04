@@ -5,16 +5,15 @@ TODO write more info
 https://realpython.com/python-descriptors/
 
 """
-from abc import ABCMeta
+from abc import ABC
 from logging import error
-from typing import List
 
-from declared_env._declared_variables import EnvironmentString, EnvironmentVariable
+from declared_env._declared_variables import EnvironmentVariable
 from declared_env._exceptions import DeclaredEnvironmentError, DeclaredEnvironmentExit
 from declared_env._prefixable import Prefixable
 
 
-class EnvironmentDeclaration(Prefixable, metaclass=ABCMeta):
+class EnvironmentDeclaration(Prefixable, ABC):
     """
     Base class responsible for parsing environment.
 
@@ -23,6 +22,7 @@ class EnvironmentDeclaration(Prefixable, metaclass=ABCMeta):
     Name of the attributes matter, expected environment variable names is constructed
     from the prefix underscore and class variable name, all in uppercase.
 
+    >>> from declared_env._declared_variables import EnvironmentString
     >>> class MyEnv(EnvironmentDeclaration):
     ...     prefix = "FOO"
     ...     host = EnvironmentString(default="localhost")  # env: FOO_HOST
@@ -55,18 +55,18 @@ class EnvironmentDeclaration(Prefixable, metaclass=ABCMeta):
         """
         return "\n".join(s.get_help() for s in self.__settings)
 
-    def validate(self) -> List[DeclaredEnvironmentError]:
+    def validate(self) -> list[DeclaredEnvironmentError]:
         """Validate all variables and return error messages list."""
         errors = []
 
-        for s in self.__settings:
+        for setting in self.__settings:
             try:
-                s.get_valid_value()
+                setting.get_valid_value()
             except DeclaredEnvironmentError as e:
                 errors.append(e)
         return errors
 
-    def __get_settings(self) -> List[EnvironmentVariable]:
+    def __get_settings(self) -> list[EnvironmentVariable]:
         return sorted(
             (
                 v

@@ -6,7 +6,7 @@ build-backend = "flit_core.buildapi"
 module = "declared_env"
 author = "Andrey Solomatin"
 author-email = "cjkjvfnby@gmail.com"
-home-page = "https://TODO"
+home-page = "https://github.com/Cjkjvfnby/declared_env"
 
 requires-python=">=3.6"
 
@@ -14,3 +14,13 @@ requires-python=">=3.6"
 profile = "black"
 multi_line_output = 3
 skip_gitignore=true
+
+[tool.pylint.MAIN]
+good-names=["e", "_"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--doctest-modules",
+    "--doctest-continue-on-failure",
+    "--showlocals",
+]

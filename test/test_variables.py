@@ -10,6 +10,13 @@ from declared_env import (
     EnvironmentString,
 )
 
+
+def init_field(field):
+    class MyConfiguration(EnvironmentDeclaration):  # noqa: PLW0612
+        prefix = "FOO"
+        var = field
+
+
 test_fields = [
     ("hello", EnvironmentString, "hello"),
     (42, EnvironmentInteger, 42),
@@ -32,8 +39,8 @@ def test_env_variable_is_returned(monkeypatch, value, field_class, expected):
         prefix = "FOO"
         var = field_class()
 
-    my = MyConfiguration()
-    assert my.var == expected
+    configuration = MyConfiguration()
+    assert configuration.var == expected
 
 
 @pytest.mark.parametrize(("default", "field_class", "expected"), test_data)
@@ -42,8 +49,8 @@ def test_default_var(default, field_class, expected):
         prefix = "FOO"
         var = field_class(default=default)
 
-    my = MyConfiguration()
-    assert my.var == expected
+    configuration = MyConfiguration()
+    assert configuration.var == expected
 
 
 @pytest.mark.parametrize(("default", "field_class", "expected"), test_data)
@@ -52,8 +59,8 @@ def test_default_var_as_string(default, field_class, expected):
         prefix = "FOO"
         var = field_class(default=str(default))
 
-    my = MyConfiguration()
-    assert my.var == expected
+    configuration = MyConfiguration()
+    assert configuration.var == expected
 
 
 @pytest.mark.parametrize(
@@ -82,49 +89,39 @@ def test_invalid(default, field_class, error_message, error_checker):
     error_checker(error_message)
 
 
-@pytest.mark.parametrize(("default", "field_class", "expected"), test_fields)
-def test_help_with_default(default, field_class, expected):
-    foo = field_class(default=default)
-
-    class MyConfiguration(EnvironmentDeclaration):
-        prefix = "FOO"
-        var = foo
-
-    help_text = foo.get_help()
+@pytest.mark.parametrize(
+    ("default", "field_class"),
+    [(default, fk) for default, fk, _, in test_fields],
+)
+def test_help_with_default(default, field_class):
+    field = field_class(default=default)
+    init_field(field)
+    help_text = field.get_help()
     assert help_text == f"FOO_VAR             default={default}"
 
 
-@pytest.mark.parametrize(("default", "field_class", "expected"), test_fields)
-def test_help_with_required(default, field_class, expected):
-    foo = field_class()
-
-    class MyConfiguration(EnvironmentDeclaration):
-        prefix = "FOO"
-        var = foo
-
-    help_text = foo.get_help()
+@pytest.mark.parametrize("field_class", [fk for _, fk, _, in test_fields])
+def test_help_with_required(field_class):
+    field = field_class()
+    init_field(field)
+    help_text = field.get_help()
     assert help_text == "FOO_VAR             required"
 
 
-@pytest.mark.parametrize(("default", "field_class", "expected"), test_fields)
-def test_help_with_required_and_help(default, field_class, expected):
-    foo = field_class(help_text="help text")
-
-    class MyConfiguration(EnvironmentDeclaration):
-        prefix = "FOO"
-        var = foo
-
-    help_text = foo.get_help()
+@pytest.mark.parametrize("field_class", [fk for _, fk, _, in test_fields])
+def test_help_with_required_and_help(field_class):
+    field = field_class(help_text="help text")
+    init_field(field)
+    help_text = field.get_help()
     assert help_text == "FOO_VAR             help text, required"
 
 
-@pytest.mark.parametrize(("default", "field_class", "expected"), test_fields)
-def test_help_with_default_and_help(default, field_class, expected):
-    foo = field_class(help_text="help text", default=default)
-
-    class MyConfiguration(EnvironmentDeclaration):
-        prefix = "FOO"
-        var = foo
-
-    help_text = foo.get_help()
+@pytest.mark.parametrize(
+    ("default", "field_class"),
+    [(default, fk) for default, fk, _, in test_fields],
+)
+def test_help_with_default_and_help(default, field_class):
+    field = field_class(help_text="help text", default=default)
+    init_field(field)
+    help_text = field.get_help()
     assert help_text == f"FOO_VAR             help text, default={default}"
