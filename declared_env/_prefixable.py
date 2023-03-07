@@ -2,7 +2,7 @@
 from abc import ABC, abstractmethod
 
 
-class Prefixable(ABC):  # noqa: PLR0903
+class Prefixable(ABC):
     """Abstract class with prefix attribute."""
 
     @property
