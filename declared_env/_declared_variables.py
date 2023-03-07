@@ -1,6 +1,4 @@
 """Variables declarations."""
-from __future__ import annotations
-
 import os
 from abc import ABCMeta, abstractmethod
 from configparser import ConfigParser
@@ -17,7 +15,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
     def converter(self, value: str) -> Any:
         """Convert value as string to variable raw type."""
 
-    def __get__(self, obj: Prefixable, type_: type = None):
+    def __get__(self, obj: Prefixable, type_: type | None = None):
         """
         Magic trick on first call replaces descriptor method with calculated value.
 
@@ -97,7 +95,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
 
 
 class EnvironmentString(EnvironmentVariable):
-    """Represent an environment variable that is string."""
+    """Represent an environment variable that is a string."""
 
     def converter(self, value: str) -> Any:
         """Return string itself."""
@@ -105,7 +103,7 @@ class EnvironmentString(EnvironmentVariable):
 
 
 class EnvironmentInteger(EnvironmentVariable):
-    """Represent an environment variable that is integer."""
+    """Represent an environment variable that is an integer."""
 
     def converter(self, value: str) -> Any:
         """Convert string representation to int."""

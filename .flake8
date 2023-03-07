@@ -1,17 +1,20 @@
 [flake8]
-ignore = E203, E501, W503, PLC0301,  # handled by black
+ignore =
+         # handled by black
+         E203, E501, W503,
          ANN101, ANN204, ANN401,
-         D104,  # no docstring in public package
-         D200,  # One-line docstring should fit on one line with quotes
-         D107,  #  Missing docstring in __init__
-         PLC0114, PLC0115, PLC0116,  # Pylint docs
-         PLE0401,  # Skip pylint imports
+         # no docstring in public package
+         D104,
+         # One-line docstring should fit on one line with quotes
+         D200,
+         #  Missing docstring in __init__
+         D107,
 exclude =
     *_venv
     venv_*
 max-cognitive-complexity = 5
 per-file-ignores =
-    test/*: D10,D101,D103,S101,ANN,PLR0903
+    test/*: D10,D101,D103,S101,ANN
     ./declared_env/__init__.py: F401
     ./declared_env/_exceptions.py: D107
 doctests = True
