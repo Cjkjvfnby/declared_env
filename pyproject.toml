@@ -26,11 +26,9 @@ addopts = [
 [tool.pylint.main]
 jobs = 0
 
-[tool.pylint.design]
-min-public-methods = 1
-
 [tool.pylint."messages control"]
-
 disable = [
     "C", # documentation
+    "import-error",
+    "too-few-public-methods"
 ]
