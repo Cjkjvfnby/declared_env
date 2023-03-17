@@ -15,12 +15,6 @@ repos:
       - id: end-of-file-fixer
       - id: mixed-line-ending
       - id: trailing-whitespace
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.1
-    hooks:
-      - id: pyupgrade
-        args:
-          - --py39-plus
   - repo: https://github.com/charliermarsh/ruff-pre-commit
     # Ruff version.
     rev: 'v0.0.256'
@@ -31,38 +25,6 @@ repos:
     rev: 23.1.0
     hooks:
       - id: black
-  - repo: https://github.com/timothycrosley/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-  - repo: https://github.com/pycqa/flake8/
-    rev: 5.0.4
-    hooks:
-      - id: flake8
-        additional_dependencies: &plugins
-          - flake8-annotations==3.0.0
-          - flake8-bandit==4.1.1
-          - flake8-bugbear==23.2.13
-          - flake8-builtins==2.1.0
-          - flake8-cognitive-complexity==0.1.0
-          - flake8-comprehensions==3.10.1
-          - flake8-docstrings==1.7.0
-          - flake8-eradicate==1.4.0
-          - flake8-print==5.0.0
-          - flake8-pytest-style==1.7.2
-          - flake8-return==1.2.0
-          - pep8-naming==0.13.3
-          - flake8-simplify==0.19.3
-          - flake8-scream==0.1.0
-          - flake8-pie==0.16.0
-          - flake8-use-pathlib==0.3.0
-          - flake8-pylint==0.1.3
-  - repo: https://github.com/asottile/yesqa
-    rev: v1.4.0
-    hooks:
-      - id: yesqa
-        additional_dependencies:
-          *plugins
   - repo: https://github.com/jorisroovers/gitlint
     rev: v0.19.0
     hooks:
