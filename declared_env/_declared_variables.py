@@ -80,7 +80,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
         """
         Get value as desired type.
 
-        Raises `EnvironmentValueError` error if value is not convertible to desired type.
+        Raises `EnvironmentValueError` error if value is not convertible to type.
 
         """
         val = self.__get_raw_value()
@@ -124,5 +124,6 @@ class EnvironmentBool(EnvironmentVariable):
     def converter(self, value: str) -> bool:
         """Convert string representation to boolean."""
         if value.lower() not in ConfigParser.BOOLEAN_STATES:
-            raise EnvironmentValueError(f"Not a boolean: {value}", self.var_name)
+            msg = f"Not a boolean: {value}"
+            raise EnvironmentValueError(msg, self.var_name)
         return ConfigParser.BOOLEAN_STATES[value.lower()]
