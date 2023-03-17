@@ -41,8 +41,9 @@ ignore = [
     "ANN401", "ANN204",
     "D212",
     "RSE102",
+    "D203",
 ]
-line-length = 88
+line-length = 98
 
 
 #         # handled by black
@@ -56,5 +57,6 @@ line-length = 88
 
 [tool.ruff.per-file-ignores]
 "__init__.py" = ["F401"]
-"test/*" = ["D10", "D101", "D103", "S101", "ANN",]
+"test/*" = ["D10", "D101", "D103", "S101", "ANN", "PLR2004"]
 "./declared_env/_exceptions.py" = ["D107"]
+"declared_env/_declared_variables.py" = ["FBT001", "FBT002"]

@@ -24,7 +24,8 @@ test_fields = [
     ("yes", EnvironmentBool, True),
 ]
 
-test_data = test_fields + [
+test_data = [
+    *test_fields,
     (3, EnvironmentFloat, 3),
     ("inf", EnvironmentFloat, math.inf),
     ("NO", EnvironmentBool, False),
