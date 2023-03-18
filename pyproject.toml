@@ -22,10 +22,9 @@ addopts = [
 [tool.ruff]
 select = ["ALL"]
 ignore = [
-    "ANN101",
+    "ANN101", "ANN204", "ANN401",
     "D104", # no docstring in public package
     "D200", # One-line docstring should fit on one line with quotes
-    "ANN401", "ANN204",
     "D212",
     "RSE102",
     "D203",
@@ -37,3 +36,6 @@ line-length = 98
 "test/*" = ["D10", "D101", "D103", "S101", "ANN", "PLR2004"]
 "./declared_env/_exceptions.py" = ["D107"]
 "declared_env/_declared_variables.py" = ["FBT001", "FBT002"]
+
+[tool.ruff.mccabe]
+max-complexity = 5
