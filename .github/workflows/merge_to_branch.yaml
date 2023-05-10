@@ -2,7 +2,7 @@ name: Merge master to weekly release
 on:
   push:
     branches:
-      - 'master'
+      - '*'
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
