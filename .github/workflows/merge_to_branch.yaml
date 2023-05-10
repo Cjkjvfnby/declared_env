@@ -1,8 +1,9 @@
 name: Merge master to weekly release
 on:
-  pull_request:
-    branches: [ 'master' ]
-    types: ['opened', 'reopened', 'synchronize']
+  workflow_run:
+    workflows: [Test and lint]
+    types:
+      - completed
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
