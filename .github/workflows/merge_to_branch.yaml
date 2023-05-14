@@ -1,9 +1,6 @@
 name: Merge master to weekly release
 on:
-  workflow_run:
-    workflows: [Test and lint]
-    types:
-      - completed
+  workflow_call:
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
