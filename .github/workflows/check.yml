@@ -41,3 +41,4 @@ jobs:
           link_missing_lines_source_dir: declared_env
   deploy-weekly-release:
     uses: ./.github/workflows/merge_to_branch.yaml
+    needs: check
