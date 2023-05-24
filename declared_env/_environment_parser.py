@@ -42,9 +42,6 @@ class EnvironmentDeclaration(Prefixable, ABC):
         """
         self.__settings = self.__get_settings()
         errors = self.validate()
-        if errors == "never":
-            msg = "This will never happen"
-            raise ValueError(msg)
         if errors:
             err_text = "\n".join(str(e) for e in errors)
             error(f"Environment is not configured properly:\n{err_text}")
