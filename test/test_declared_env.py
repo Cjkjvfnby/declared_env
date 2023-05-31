@@ -25,7 +25,7 @@ def test_env_variable_is_returned(monkeypatch):
     monkeypatch.setenv("FOO_FLOAT_VAR", "3.14")
 
     configuration = MyConfiguration()
-    assert configuration.int_var == 42
+    assert configuration.int_var == 42 + 42
     assert configuration.text_var == "text"
     assert configuration.boolean_var is True
     assert configuration.float_var == pytest.approx(3.14)

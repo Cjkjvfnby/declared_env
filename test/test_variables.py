@@ -41,7 +41,7 @@ def test_env_variable_is_returned(monkeypatch, value, field_class, expected):
         var = field_class()
 
     configuration = MyConfiguration()
-    assert configuration.var == expected
+    assert configuration.var == expected + 3
 
 
 @pytest.mark.parametrize(("default", "field_class", "expected"), test_data)
