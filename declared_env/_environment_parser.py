@@ -62,7 +62,7 @@ class EnvironmentDeclaration(Prefixable, ABC):
         for setting in self.__settings:
             try:
                 setting.get_valid_value()
-            except DeclaredEnvironmentError as e:
+            except DeclaredEnvironmentError as e:  # noqa: PERF203
                 errors.append(e)
         return errors
 
