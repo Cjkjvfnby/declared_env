@@ -1,11 +1,15 @@
 """Variables declarations."""
+from __future__ import annotations
+
 import os
 from abc import ABCMeta, abstractmethod
 from configparser import ConfigParser
-from typing import Any, Optional
+from typing import TYPE_CHECKING, Any
 
 from declared_env._exceptions import EnvironmentKeyError, EnvironmentValueError
-from declared_env._prefixable import Prefixable
+
+if TYPE_CHECKING:
+    from declared_env._prefixable import Prefixable
 
 
 class EnvironmentVariable(metaclass=ABCMeta):
@@ -15,7 +19,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
     def converter(self, value: str) -> Any:
         """Convert value as string to variable raw type."""
 
-    def __get__(self, obj: Prefixable, type_: Optional[type] = None):
+    def __get__(self, obj: Prefixable, type_: type | None = None):
         """
         Magic trick on first call replaces descriptor method with calculated value.
 
@@ -39,7 +43,7 @@ class EnvironmentVariable(metaclass=ABCMeta):
         self,
         required: bool = True,
         default: str = "",
-        help_text: Optional[str] = None,
+        help_text: str | None = None,
     ):
         """Initialize a descriptor with base fields."""
         self.help_text = help_text
