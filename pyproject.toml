@@ -29,6 +29,7 @@ ignore = [
     "RSE102",
     "D203",
     "FLY002", # fix produces invalid code https://github.com/astral-sh/ruff/issues/5150
+    "G004", # logging with f string is ok
 ]
 line-length = 98
 target-version = "py39"
