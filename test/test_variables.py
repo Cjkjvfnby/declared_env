@@ -92,7 +92,7 @@ def test_invalid(default, field_class, error_message, error_checker):
 
 @pytest.mark.parametrize(
     ("default", "field_class"),
-    [(default, fk) for default, fk, _, in test_fields],
+    [(default, fk) for default, fk, _ in test_fields],
 )
 def test_help_with_default(default, field_class):
     field = field_class(default=default)
@@ -101,7 +101,7 @@ def test_help_with_default(default, field_class):
     assert help_text == f"FOO_VAR             default={default}"
 
 
-@pytest.mark.parametrize("field_class", [fk for _, fk, _, in test_fields])
+@pytest.mark.parametrize("field_class", [fk for _, fk, _ in test_fields])
 def test_help_with_required(field_class):
     field = field_class()
     init_field(field)
@@ -109,7 +109,7 @@ def test_help_with_required(field_class):
     assert help_text == "FOO_VAR             required"
 
 
-@pytest.mark.parametrize("field_class", [fk for _, fk, _, in test_fields])
+@pytest.mark.parametrize("field_class", [fk for _, fk, _ in test_fields])
 def test_help_with_required_and_help(field_class):
     field = field_class(help_text="help text")
     init_field(field)
@@ -119,7 +119,7 @@ def test_help_with_required_and_help(field_class):
 
 @pytest.mark.parametrize(
     ("default", "field_class"),
-    [(default, fk) for default, fk, _, in test_fields],
+    [(default, fk) for default, fk, _ in test_fields],
 )
 def test_help_with_default_and_help(default, field_class):
     field = field_class(help_text="help text", default=default)

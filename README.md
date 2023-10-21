@@ -3,7 +3,8 @@
 [![](https://img.shields.io/badge/dependency-None-green.svg)](https://github.com/cjkjvfnby/declared_env)
 [![](https://github.com/cjkjvfnby/declared_env/workflows/Lint/badge.svg)](https://github.com/cjkjvfnby/declared_env/actions)
 [![](https://github.com/cjkjvfnby/declared_env/workflows/Test/badge.svg)](https://github.com/cjkjvfnby/declared_env/actions)
-[![](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/cjkjvfnby/declared_env)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/format.json)](https://github.com/astral-sh/ruff_format)
 [![](https://black.readthedocs.io/en/stable/_static/license.svg)](https://github.com/cjkjvfnby/declared_env/blob/master/LICENSE)
 
 # Declared env

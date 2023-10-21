@@ -68,10 +68,6 @@ class EnvironmentDeclaration(Prefixable, ABC):
 
     def __get_settings(self) -> list[EnvironmentVariable]:
         return sorted(
-            (
-                v
-                for v in self.__class__.__dict__.values()
-                if isinstance(v, EnvironmentVariable)
-            ),
+            (v for v in self.__class__.__dict__.values() if isinstance(v, EnvironmentVariable)),
             key=lambda x: x.name,
         )

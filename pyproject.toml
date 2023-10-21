@@ -47,3 +47,6 @@ max-complexity = 5
 exclude_also = [
     "if TYPE_CHECKING:",
     ]
+
+[tool.ruff.format]
+line-ending = "native"
