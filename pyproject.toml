@@ -30,6 +30,8 @@ lint.ignore = [
     "D203",
     "FLY002", # fix produces invalid code https://github.com/astral-sh/ruff/issues/5150
     "G004", # logging with f string is ok
+    "COM812",
+    "ISC001",
 ]
 line-length = 98
 target-version = "py39"

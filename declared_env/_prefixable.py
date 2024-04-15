@@ -1,4 +1,5 @@
 """Abstract class with prefix attribute."""
+
 from abc import ABC, abstractmethod
 
 
