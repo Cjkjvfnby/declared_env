@@ -22,7 +22,7 @@ addopts = [
 [tool.ruff]
 lint.select = ["ALL"]
 lint.ignore = [
-    "ANN101", "ANN204", "ANN401",
+    "ANN204", "ANN401",
     "D104", # no docstring in public package
     "D200", # One-line docstring should fit on one line with quotes
     "D212",  # Start first line of docstring on the line with quotes
@@ -33,6 +33,7 @@ lint.ignore = [
     "COM812",
     "ISC001",
     "D107", "D105", # docstring for magic method
+    "LOG015",
 ]
 line-length = 98
 target-version = "py39"

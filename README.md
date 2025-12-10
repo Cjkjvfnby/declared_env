@@ -96,12 +96,12 @@ if __name__ == '__main__':
 ## Install pre-commit
 - add hooks
   ```shell
-  pre-commit install
-  pre-commit install --hook-type commit-msg
+  prek install
+  prek install --hook-type commit-msg
   ```
 - update to the latest versions
   ```shell
-  pre-commit autoupdate
+  prek autoupdate
   ```
 
 ## Formatting and Linting

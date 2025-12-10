@@ -18,11 +18,11 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v5
+      - uses: j178/prek-action@v1
+      - uses: actions/setup-python@v6
         with:
           python-version: 3.9
-      - uses: pre-commit/action@v3.0.0
       - name: Install dependencies
         run: |
           pip install -r requirements-dev.txt
@@ -31,7 +31,7 @@ jobs:
           pytest -v --cov=declared_env --cov-report xml:coverage.xml
           pytest -v --cov=declared_env
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
       - name: Report coverage
         uses: 5monkeys/cobertura-action@master
         with:
