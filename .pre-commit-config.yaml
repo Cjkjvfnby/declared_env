@@ -2,12 +2,10 @@ default_stages:
   - commit
   - manual
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+  - repo: builtin
     hooks:
       - id: check-added-large-files
       - id: check-executables-have-shebangs
-      - id: check-case-conflict
       - id: check-json
       - id: check-merge-conflict
       - id: check-toml
